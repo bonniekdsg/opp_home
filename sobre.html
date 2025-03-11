@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sobre o Observatório de Políticas Públicas (OPP) - Uma ferramenta do MPAC para monitoramento e análise de políticas públicas">
+    <meta name="keywords" content="OPP, Observatório, Políticas Públicas, MPAC, Ministério Público, Acre">
+    <meta name="author" content="MPAC">
+    <meta name="theme-color" content="#9b2d30">
+    <title>Sobre o Observatório de Políticas Públicas</title>
+    <!-- Preconectar com domínios externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://static.wixstatic.com">
+    <!-- Importando a fonte Roboto do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* VARIÁVEIS E RESET */
+        :root {
+            --primary-color: #9b2d30;
+            --secondary-color: #333;
+            --light-color: #f8f8f8;
+            --dark-color: #222;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--secondary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* CABEÇALHO */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            min-width: 250px;
+            max-height: 60px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #e52d28;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 70%;
+        }
+
+        nav ul li a:hover {
+            background-color: #e52d28;
+        }
+
+        /* Estilo para os ícones sociais na barra de navegação */
+        .nav-social-icons {
+            display: flex;
+            gap: 5px;
+            margin-left: 10px;
+        }
+        
+        .nav-social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            padding: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-social-icons a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .nav-social-icons a::after {
+            display: none;
+        }
+        
+        .nav-social-icons img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        .page-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .about-section {
+            padding: 3rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .mission-section {
+            background-color: var(--light-color);
+            padding: 3rem 0;
+        }
+
+        .mission-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mission-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mission-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            background-color: #e52d28;
+            transform: translateY(-3px);
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #aaa;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .mission-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -250px;
+                width: 250px;
+                height: 100vh;
+                background-color: var(--primary-color);
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1001;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 4rem 0 0 0;
+            }
+            
+            nav ul li {
+                margin: 0;
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 1rem 2rem;
+                border-radius: 0;
+            }
+            
+            .mission-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Estilos para a seção de produtos */
+        .section-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #666;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .product-icon {
+            margin: 0 auto 1.5rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(155, 45, 48, 0.1);
+            border-radius: 50%;
+            padding: 15px;
+        }
+        
+        .product-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .product-card p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+        
+        .product-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-link:hover {
+            background-color: #e52d28;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(229, 45, 40, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .product-card {
+                padding: 1.5rem;
+            }
+            
+            .product-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .product-card h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Estilo para o grid de imagens */
+        .about-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 15px;
+            height: 100%;
+        }
+        
+        .image-grid-item {
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .image-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-grid-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 200px);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .about-image-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 200px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container header-container">
+            <div class="logo"><a href="index.html"><img src="https://static.wixstatic.com/media/c96204_9a59b8febc1a4372a615ea58feb115a8~mv2.png" alt="Logo OPP" width="250" height="60" loading="eager"></a></div>
+            <div class="menu-toggle" id="menuToggle" tabindex="0" role="button" aria-label="Menu" aria-expanded="false">
+                <i>☰</i>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html#inicio">Início</a></li>
+                    <li><a href="index.html#produtos">Produtos</a></li>
+                    <li><a href="index.html#noticias">Notícias</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li class="nav-social-icons">
+                        <a href="https://www.instagram.com/mpacre/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="https://static.wixstatic.com/media/c96204_8f5d9c11bb68466eb64dca4e43f79834~mv2.png" alt="Instagram"></a>
+                        <a href="https://www.mpac.mp.br/" target="_blank" rel="noopener noreferrer" aria-label="MPAC"><img src="https://static.wixstatic.com/media/c96204_14ad95c6a55e4d839ed6abcf48deafde~mv2.png" alt="MPAC"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="overlay" id="overlay"></div>
+
+    
+
+    <!-- Seção Sobre -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>O que é o Observatório de Políticas Públicas?</h2>
+                    <p>O Observatório de Políticas Públicas (OPP) do Ministério Público do Estado do Acre (MPAC) representa uma inovação significativa no acompanhamento da gestão pública no estado. Criado em 2024 e vinculado ao Núcleo de Apoio Técnico (NAT), o OPP se destaca pela sua contribuição para a transparência e o controle social, monitorando a execução de políticas públicas de acordo com o Plano Plurianual (PPA), a Lei de Diretrizes Orçamentárias (LDO) e a Lei Orçamentária Anual (LOA).</p>
+                    <p>O OPP se tornou uma ferramenta essencial para a análise e o acompanhamento de indicadores sociais, financeiros e orçamentários, fornecendo relatórios técnicos, painéis interativos, boletins e informativos que auxiliam na atuação do MPAC e na divulgação de informações para a sociedade. Através da iniciativa "Falando de Orçamento", o OPP tem desempenhado um papel importante na promoção do conhecimento sobre orçamento público de maneira acessível, beneficiando tanto membros e servidores do MPAC quanto o público em geral.</p>
+                    <p>Reconhecido com o 2º lugar no IV Prêmio de Inovação do MPAC e selecionado pelo Conselho Nacional do Ministério Público (CNMP) no I Congresso da Defesa da Integridade, o OPP reflete a importância crescente da transparência na administração pública e seu impacto na integridade da gestão pública no Acre. Seu desafio de expandir para os 22 municípios do estado é uma meta crucial para garantir que gestores, órgãos de controle e cidadãos tenham acesso a dados claros, padronizados e acessíveis sobre o uso dos recursos públicos.</p>
+                    </p>Com uma atuação focada na transparência, eficiência e responsabilidade, o OPP se consolida como um pilar da probidade administrativa e da democracia, sendo uma ferramenta chave na construção de uma gestão pública mais transparente e voltada para o interesse coletivo.</p>
+                </div>
+                <div class="about-image-grid">
+                    <div class="image-grid-item">
+                        <img src="https://static.wixstatic.com/media/c96204_bb5f91d991a1435a99478a030c5029a4~mv2.png" alt="Observatório de Políticas Públicas" loading="lazy">
+                    </div>
+                    <div class="image-grid-item">
+                        <img src="https://static.wixstatic.com/media/c96204_550de29f6d884bcca8182e99e7a9b2af~mv2.png" alt="Painéis Interativos" loading="lazy">
+                    </div>
+                    <div class="image-grid-item">
+                        <img src="https://static.wixstatic.com/media/c96204_2137fd5cecdc4f0dab94bce6e4de09b1~mv2.png" alt="Boletins Informativos" loading="lazy">
+                    </div>
+                    <div class="image-grid-item">
+                        <img src="https://static.wixstatic.com/media/c96204_8433680da40c40bb81c08f790f4f4cba~mv2.png" alt="Iniciativas" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Missão, Visão e Valores -->
+    <section class="section" id="missao-visao-valores" style="margin-bottom: 5rem;">
+        <div class="container">
+            <h2 class="section-title">Nossos Produtos e Serviços</h2>
+            
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">
+                        <img src="https://static.wixstatic.com/media/c96204_550de29f6d884bcca8182e99e7a9b2af~mv2.png" alt="Ícone Painéis" width="64" height="64">
+                    </div>
+                    <h3>PAINÉIS</h3>
+                    <p>PAINÉIS INTERATIVOS SOBRE INDICADORES SOCIAIS, ORÇAMENTÁRIOS E FISCAIS</p>
+                    <a href="#" class="product-link">Explorar</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">
+                        <img src="https://static.wixstatic.com/media/c96204_2137fd5cecdc4f0dab94bce6e4de09b1~mv2.png" alt="Ícone Boletins" width="64" height="64">
+                    </div>
+                    <h3>BOLETINS</h3>
+                    <p>BOLETINS E INFORMATIVOS COM ANÁLISES DETALHADAS</p>
+                    <a href="#" class="product-link">Acessar</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">
+                        <img src="https://static.wixstatic.com/media/c96204_8433680da40c40bb81c08f790f4f4cba~mv2.png" alt="Ícone Iniciativas" width="64" height="64">
+                    </div>
+                    <h3>INICIATIVAS</h3>
+                    <p>PROJETOS E INICIATIVAS PARA O FORTALECIMENTO DO CONTROLE SOCIAL E PROMOÇÃO DE CONHECIMENTO</p>
+                    <a href="#" class="product-link">Conhecer</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-icon">
+                        <img src="https://static.wixstatic.com/media/c96204_407945304b664f1d8cf181a6370e8f2e~mv2.png" alt="Ícone Relatórios" width="64" height="64">
+                    </div>
+                    <h3>RELATÓRIOS</h3>
+                    <p>RELATÓRIOS TÉCNICOS SOBRE EXECUÇÃO E TRANSPARÊNCIA</p>
+                    <a href="#" class="product-link">Visualizar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <div class="footer-logo">OPP</div>
+                    <div class="footer-description">
+                        Observatório de Políticas Públicas dedicado à transparência e ao monitoramento fiscal.
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/mpacre/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <img src="https://static.wixstatic.com/media/c96204_35e7835a480d49f29359e3246344af2d~mv2.png" alt="Instagram" width="24" height="24">
+                            <span class="sr-only">Instagram</span>
+                        </a>
+                        <a href="https://www.mpac.mp.br/" class="social-icon" aria-label="Site" target="_blank" rel="noopener noreferrer">
+                            <img src="https://static.wixstatic.com/media/c96204_196f832d97854a339360f23efd193930~mv2.png" alt="MPAC" width="24" height="24">
+                            <span class="sr-only">Site</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#inicio">Início</a></li>
+                        <li><a href="index.html#produtos">Produtos</a></li>
+                        <li><a href="index.html#noticias">Notícias</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Produtos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#produtos">Produtos</a></li>
+                        <li><a href="paineis.html">Painéis</a></li>
+                        <li><a href="boletins.html">Boletins</a></li>
+                        <li><a href="iniciativas.html">Iniciativas</a></li>
+                        <li><a href="relatorios.html">Relatórios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li>Ministério Público do Estado do Acre</li>
+                        <li>Endereço: Rua Marechal Deodoro, 472, Centro, Rio Branco - AC, CEP: 69900-400</li>
+                        <li>Telefone: (68) 3212-2000</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                Ministério Público do Estado do Acre: © 2025 Observatório de Políticas Públicas. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Elementos DOM
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+        const overlay = document.getElementById('overlay');
+
+        // Menu móvel
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        overlay.addEventListener('click', () => {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Adicionando suporte para navegação por teclado
+        menuToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                menuToggle.click();
+            }
+        });
+
+        // Fechando menu ao pressionar ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('active')) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html> 
