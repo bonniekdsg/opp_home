@@ -180,6 +180,25 @@
             margin-bottom: 1.5rem;
         }
 
+        /* Estilo para o botão Saiba Mais na seção hero */
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .hero-btn:hover {
+            background-color: #e52d28;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
         /* SEÇÕES */
         .section {
             padding: 4rem 0;
@@ -682,13 +701,45 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* Estilo para os ícones sociais na barra de navegação */
+        .nav-social-icons {
+            display: flex;
+            gap: 5px;
+            margin-left: 10px;
+        }
+        
+        .nav-social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            padding: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-social-icons a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .nav-social-icons a::after {
+            display: none;
+        }
+        
+        .nav-social-icons img {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
     <!-- Cabeçalho -->
     <header>
         <div class="container header-container">
-            <div class="logo"><img src="https://static.wixstatic.com/media/c96204_9a59b8febc1a4372a615ea58feb115a8~mv2.png" alt="Logo OPP" width="250" height="60" loading="eager"></div>
+            <div class="logo"><a href="index.html"><img src="https://static.wixstatic.com/media/c96204_9a59b8febc1a4372a615ea58feb115a8~mv2.png" alt="Logo OPP" width="250" height="60" loading="eager"></a></div>
             <div class="menu-toggle" id="menuToggle" tabindex="0" role="button" aria-label="Menu" aria-expanded="false">
                 <i>☰</i>
             </div>
@@ -698,6 +749,10 @@
                     <li><a href="#produtos">Produtos</a></li>
                     <li><a href="#noticias">Notícias</a></li>
                     <li><a href="#contato">Contato</a></li>
+                    <li class="nav-social-icons">
+                        <a href="https://www.instagram.com/mpacre/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="https://static.wixstatic.com/media/c96204_8f5d9c11bb68466eb64dca4e43f79834~mv2.png" alt="Instagram"></a>
+                        <a href="https://www.mpac.mp.br/" target="_blank" rel="noopener noreferrer" aria-label="MPAC"><img src="https://static.wixstatic.com/media/c96204_14ad95c6a55e4d839ed6abcf48deafde~mv2.png" alt="MPAC"></a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -711,7 +766,8 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Observatório de Políticas Públicas: Uma Ferramenta do MPAC para a Sociedade</h1>
-                <p>O Observatório de Políticas Públicas (OPP) monitora a execução das políticas públicas previstas no PPA, LDO e LOA, analisando fontes de recursos, viabilidade do planejamento governamental e a saúde fiscal do Estado e dos municípios. Também avalia os principais indicadores fiscais exigidos pela Lei de Responsabilidade Fiscal, promovendo transparência e eficiência na gestão pública.</p>
+                <p>O OPP monitora a execução das políticas públicas previstas no Plano Plurianual (PPA), na Lei de Diretrizes Orçamentárias (LDO) e na Lei Orçamentária Anual (LOA), acompanhando indicadores sociais, orçamentários e fiscais do estado e dos municípios. Nosso trabalho fortalece a atuação do MPAC na defesa do bem público, amplia a transparência sobre o orçamento e promove um controle social mais democrático. Transformamos dados em informação acessível para qualificar a gestão e incentivar a participação cidadã.</p>
+                <a href="sobre.html" class="hero-btn">Saiba Mais</a>
             </div>
         </div>
     </section>
@@ -818,21 +874,13 @@
                         Observatório de Políticas Públicas dedicado à transparência e ao monitoramento fiscal.
                     </div>
                     <div class="social-icons">
-                        <a href="#" class="social-icon" aria-label="Facebook">
-                            <span aria-hidden="true">f</span>
-                            <span class="sr-only">Facebook</span>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="LinkedIn">
-                            <span aria-hidden="true">in</span>
-                            <span class="sr-only">LinkedIn</span>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="Instagram">
-                            <span aria-hidden="true">ig</span>
+                        <a href="https://www.instagram.com/mpacre/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <img src="https://static.wixstatic.com/media/c96204_35e7835a480d49f29359e3246344af2d~mv2.png" alt="Instagram" width="24" height="24">
                             <span class="sr-only">Instagram</span>
                         </a>
-                        <a href="#" class="social-icon" aria-label="YouTube">
-                            <span aria-hidden="true">yt</span>
-                            <span class="sr-only">YouTube</span>
+                        <a href="https://www.mpac.mp.br/" class="social-icon" aria-label="Site" target="_blank" rel="noopener noreferrer">
+                            <img src="https://static.wixstatic.com/media/c96204_196f832d97854a339360f23efd193930~mv2.png" alt="MPAC" width="24" height="24">
+                            <span class="sr-only">Site</span>
                         </a>
                     </div>
                 </div>
@@ -848,23 +896,24 @@
                 <div class="footer-section">
                     <h3>Produtos</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Painéis</a></li>
-                        <li><a href="#">Boletins</a></li>
-                        <li><a href="#">Iniciativas</a></li>
-                        <li><a href="#">Relatórios</a></li>
+                        <li><a href="index.html#produtos">Produtos</a></li>
+                        <li><a href="paineis.html">Painéis</a></li>
+                        <li><a href="boletins.html">Boletins</a></li>
+                        <li><a href="iniciativas.html">Iniciativas</a></li>
+                        <li><a href="relatorios.html">Relatórios</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Contato</h3>
                     <ul class="footer-links">
-                        <li>Endereço: Rua Exemplo, 123</li>
-                        <li>Telefone: (00) 1234-5678</li>
-                        <li>Email: contato@opp.org.br</li>
+                        <li>Ministério Público do Estado do Acre</li>
+                        <li>Endereço: Rua Marechal Deodoro, 472, Centro, Rio Branco - AC, CEP: 69900-400</li>
+                        <li>Telefone: (68) 3212-2000</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                © 2025 Observatório de Políticas Públicas. Todos os direitos reservados.
+                Ministério Público do Estado do Acre: © 2025 Observatório de Políticas Públicas. Todos os direitos reservados.
             </div>
         </div>
     </footer>
