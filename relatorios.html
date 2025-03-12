@@ -375,14 +375,15 @@
             nav {
                 position: fixed;
                 top: 0;
-                right: -280px;
-                width: 280px;
+                right: -300px;
+                width: 300px;
                 height: 100vh;
                 background-color: var(--primary-color);
                 box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
                 transition: var(--transition);
                 z-index: 1002;
                 padding-top: var(--spacing-xl);
+                overflow-y: auto;
             }
             
             nav.active {
@@ -405,6 +406,7 @@
                 padding: var(--spacing-sm) var(--spacing-md);
                 border-radius: 0;
                 width: 100%;
+                font-size: 1.1rem;
             }
             
             nav ul li a:hover {
@@ -413,6 +415,23 @@
             
             nav ul li a::after {
                 display: none;
+            }
+            
+            .nav-social-icons {
+                flex-direction: row;
+                justify-content: center;
+                margin: var(--spacing-md) 0;
+                gap: 15px;
+            }
+            
+            .nav-social-icons a {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .nav-social-icons img {
+                width: 24px;
+                height: 24px;
             }
             
             .overlay {
@@ -475,7 +494,7 @@
         /* Celulares grandes */
         @media (max-width: 576px) {
             .container {
-                padding: 0 var(--spacing-sm);
+                padding: 0 15px;
             }
             
             .footer-container {
@@ -514,6 +533,16 @@
             .footer-section h3::after {
                 left: 50%;
                 transform: translateX(-50%);
+            }
+            
+            /* Ajustes específicos para a página de relatórios em celulares */
+            .content-area {
+                padding: 1.2rem;
+            }
+            
+            .placeholder-text {
+                font-size: 0.9rem;
+                margin: 1.5rem 0;
             }
         }
 
@@ -627,12 +656,12 @@
                         <li>Ministério Público do Estado do Acre</li>
                         <li>Endereço: Rua Marechal Deodoro, 472, Centro, Rio Branco - AC, CEP: 69900-400</li>
                         <li>Telefone: (68) 3212-2000</li>
-                        <li>Email: contato@mpac.mp.br</li>
+                        <li>Email: obspp@mpac.mp.br</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                Ministério Público do Estado do Acre: © 2025 Observatório de Políticas Públicas. Todos os direitos reservados.
+                <p><a href="https://www.mpac.mp.br" target="_blank" rel="noopener noreferrer">Ministério Público do Estado do Acre</a>: © 2025 Observatório de Políticas Públicas. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
