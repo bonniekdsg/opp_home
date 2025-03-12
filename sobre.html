@@ -25,6 +25,11 @@
             --transition: all 0.3s ease;
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             --border-radius: 12px;
+            --spacing-xl: 4rem;
+            --spacing-lg: 2rem;
+            --spacing-md: 1.5rem;
+            --spacing-sm: 0.75rem;
+            --primary-hover: #e52d28;
         }
 
         * {
@@ -382,7 +387,12 @@
             }
         }
 
+        /* Tablets */
         @media (max-width: 768px) {
+            .container {
+                max-width: 540px;
+            }
+            
             .menu-toggle {
                 display: block;
             }
@@ -390,13 +400,15 @@
             nav {
                 position: fixed;
                 top: 0;
-                right: -250px;
-                width: 250px;
+                right: -300px;
+                width: 300px;
                 height: 100vh;
                 background-color: var(--primary-color);
                 box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
                 transition: var(--transition);
-                z-index: 1001;
+                z-index: 1002;
+                padding-top: var(--spacing-xl);
+                overflow-y: auto;
             }
             
             nav.active {
@@ -405,7 +417,8 @@
             
             nav ul {
                 flex-direction: column;
-                padding: 4rem 0 0 0;
+                padding: 0;
+                margin-top: 50px; /* Espaço para o botão de fechar */
             }
             
             nav ul li {
@@ -415,26 +428,197 @@
             
             nav ul li a {
                 display: block;
-                padding: 1rem 2rem;
+                padding: var(--spacing-sm) var(--spacing-md);
                 border-radius: 0;
+                width: 100%;
+                font-size: 1.1rem;
             }
             
-            .mission-cards {
-                grid-template-columns: 1fr;
+            nav ul li a:hover {
+                background-color: var(--primary-hover);
             }
             
-            .page-title {
-                font-size: 2rem;
+            nav ul li a::after {
+                display: none;
+            }
+            
+            .nav-social-icons {
+                flex-direction: row;
+                justify-content: center;
+                margin: var(--spacing-md) 0;
+                gap: 15px;
+            }
+            
+            .nav-social-icons a {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .nav-social-icons img {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1001;
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                -webkit-backdrop-filter: blur(3px);
+                backdrop-filter: blur(3px);
+                pointer-events: none;
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+            
+            .logo img {
+                min-width: 150px;
+                max-height: 40px;
+            }
+            
+            .main-content {
+                padding: var(--spacing-lg) 0;
+            }
+            
+            .content-area {
+                padding: var(--spacing-sm);
+            }
+            
+            .close-menu {
+                display: block; /* Mostra o botão em telas pequenas */
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                z-index: 1003;
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            nav.active .close-menu {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            /* Ajustes para a página sobre em tablets */
+            .about-section {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+            
+            .about-content {
+                width: 100%;
+            }
+            
+            .mission-vision-values {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
         }
-
+        
+        /* Celulares grandes */
         @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
             .footer-container {
                 grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            .main-content {
+                padding: var(--spacing-md) 0;
             }
             
             .page-title {
+                font-size: 1.6rem;
+            }
+            
+            html {
+                font-size: 14px;
+            }
+            
+            .footer-section {
+                margin-bottom: var(--spacing-sm);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .footer-logo, .footer-description {
+                text-align: center;
+            }
+            
+            .footer-section h3 {
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            /* Ajustes específicos para a página sobre em celulares */
+            .about-header h1 {
                 font-size: 1.8rem;
+            }
+            
+            .about-header p {
+                font-size: 0.95rem;
+            }
+            
+            .about-content h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .about-content p {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+            
+            .mission-vision-values {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .mvv-card {
+                padding: 1.2rem;
+            }
+            
+            .mvv-card h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .mvv-card p {
+                font-size: 0.9rem;
+            }
+            
+            .back-button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
         }
 
@@ -658,6 +842,69 @@
     </section>
 
     <!-- Seção Missão, Visão e Valores -->
+    <section class="mission-section" style="margin-bottom: 5rem; background-color: #f8f8f8; padding: 4rem 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; color: var(--primary-color); font-size: 2.2rem; position: relative;">
+                Missão, Visão e Valores
+                <span style="display: block; width: 80px; height: 4px; background-color: var(--primary-color); margin: 1rem auto 0;"></span>
+            </h2>
+            
+            <div class="mission-content">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+                    <!-- Missão -->
+                    <div class="mission-card" style="text-align: left; background-color: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; border-top: 5px solid var(--primary-color);">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h3 style="margin: 0; font-size: 1.6rem; color: var(--primary-color);">Missão</h3>
+                        </div>
+                        <p style="color: #555; line-height: 1.8; font-size: 1.05rem;">Promover a transparência e a eficiência da gestão pública por meio do monitoramento das políticas e finanças públicas, fornecendo informações estratégicas que auxiliem o Ministério Público do Estado do Acre (MPAC) na fiscalização, no combate à corrupção e no fortalecimento do controle social, contribuindo para uma administração pública mais ética, responsável e participativa.</p>
+                    </div>
+                    
+                    <!-- Visão -->
+                    <div class="mission-card" style="text-align: left; background-color: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; border-top: 5px solid var(--primary-color);">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h3 style="margin: 0; font-size: 1.6rem; color: var(--primary-color);">Visão</h3>
+                        </div>
+                        <p style="color: #555; line-height: 1.8; font-size: 1.05rem;">Ser referência no monitoramento e na análise das políticas públicas e da gestão fiscal no Estado do Acre, contribuindo para o fortalecimento da transparência, da responsabilidade fiscal e do controle social. O OPP busca consolidar-se como um instrumento essencial para o Ministério Público do Estado do Acre (MPAC), auxiliando na defesa da probidade administrativa e no combate à corrupção, além de promover a participação cidadã na gestão pública.</p>
+                    </div>
+                </div>
+                
+                <!-- Valores -->
+                <div class="mission-card" style="text-align: left; background-color: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); transition: all 0.3s ease; border-top: 5px solid var(--primary-color);">
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="margin: 0; font-size: 1.6rem; color: var(--primary-color);">Valores</h3>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                        <div style="background-color: #f8f8f8; padding: 1.2rem; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <p style="color: #444; line-height: 1.6; font-size: 1rem; margin: 0;"><strong style="color: var(--primary-color);">✅ Transparência</strong> – Compromisso com a disseminação clara e acessível das informações sobre a gestão pública, garantindo que os dados sejam compreensíveis e úteis para a sociedade.</p>
+                        </div>
+                        
+                        <div style="background-color: #f8f8f8; padding: 1.2rem; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <p style="color: #444; line-height: 1.6; font-size: 1rem; margin: 0;"><strong style="color: var(--primary-color);">✅ Responsabilidade Fiscal</strong> – Monitoramento e análise das contas públicas com base na legalidade e na eficiência, assegurando que os recursos sejam aplicados de forma adequada e sustentável.</p>
+                        </div>
+                        
+                        <div style="background-color: #f8f8f8; padding: 1.2rem; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <p style="color: #444; line-height: 1.6; font-size: 1rem; margin: 0;"><strong style="color: var(--primary-color);">✅ Inovação</strong> – Desenvolvimento contínuo de ferramentas e metodologias que aprimorem a fiscalização das políticas públicas e promovam maior acesso à informação.</p>
+                        </div>
+                        
+                        <div style="background-color: #f8f8f8; padding: 1.2rem; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <p style="color: #444; line-height: 1.6; font-size: 1rem; margin: 0;"><strong style="color: var(--primary-color);">✅ Controle Social</strong> – Incentivo à participação ativa da sociedade no acompanhamento e na fiscalização da gestão pública, fortalecendo a democracia e a cidadania.</p>
+                        </div>
+                        
+                        <div style="background-color: #f8f8f8; padding: 1.2rem; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <p style="color: #444; line-height: 1.6; font-size: 1rem; margin: 0;"><strong style="color: var(--primary-color);">✅ Probidade Administrativa</strong> – Atuação na prevenção e no combate a irregularidades na administração pública, assegurando que os princípios da ética e da legalidade sejam respeitados.</p>
+                        </div>
+                        
+                        <div style="background-color: #f8f8f8; padding: 1.2rem; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <p style="color: #444; line-height: 1.6; font-size: 1rem; margin: 0;"><strong style="color: var(--primary-color);">✅ Eficiência e Qualidade Técnica</strong> – Produção de análises qualificadas, baseadas em dados confiáveis e metodologias robustas, para subsidiar a atuação do MPAC e demais órgãos de controle.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Missão, Visão e Valores -->
     <section class="section" id="missao-visao-valores" style="margin-bottom: 5rem;">
         <div class="container">
             <h2 class="section-title">Nossos Produtos e Serviços</h2>
@@ -669,8 +916,8 @@
                         <img src="https://static.wixstatic.com/media/c96204_550de29f6d884bcca8182e99e7a9b2af~mv2.png" alt="Ícone Painéis" width="64" height="64">
                     </div>
                     <h3>PAINÉIS</h3>
-                    <p>PAINÉIS INTERATIVOS SOBRE INDICADORES SOCIAIS, ORÇAMENTÁRIOS E FISCAIS</p>
-                    <a href="#" class="product-link">Explorar</a>
+                    <p>Painéis interativos sobre indicadores sociais, orçamentários e fiscais</p>
+                    <a href="paineis.html" class="product-link">Explorar</a>
                 </div>
                 
                 <div class="product-card">
@@ -678,8 +925,8 @@
                         <img src="https://static.wixstatic.com/media/c96204_2137fd5cecdc4f0dab94bce6e4de09b1~mv2.png" alt="Ícone Boletins" width="64" height="64">
                     </div>
                     <h3>BOLETINS</h3>
-                    <p>BOLETINS E INFORMATIVOS COM ANÁLISES DETALHADAS</p>
-                    <a href="#" class="product-link">Acessar</a>
+                    <p>Boletins e informativos com análises detalhadas</p>
+                    <a href="boletins.html" class="product-link">Acessar</a>
                 </div>
                 
                 <div class="product-card">
@@ -687,8 +934,8 @@
                         <img src="https://static.wixstatic.com/media/c96204_8433680da40c40bb81c08f790f4f4cba~mv2.png" alt="Ícone Iniciativas" width="64" height="64">
                     </div>
                     <h3>INICIATIVAS</h3>
-                    <p>PROJETOS E INICIATIVAS PARA O FORTALECIMENTO DO CONTROLE SOCIAL E PROMOÇÃO DE CONHECIMENTO</p>
-                    <a href="#" class="product-link">Conhecer</a>
+                    <p>Projetos e iniciativas para o fortalecimento do controle social e promoção de conhecimento</p>
+                    <a href="iniciativas.html" class="product-link">Conhecer</a>
                 </div>
                 
                 <div class="product-card">
@@ -696,8 +943,8 @@
                         <img src="https://static.wixstatic.com/media/c96204_407945304b664f1d8cf181a6370e8f2e~mv2.png" alt="Ícone Relatórios" width="64" height="64">
                     </div>
                     <h3>RELATÓRIOS</h3>
-                    <p>RELATÓRIOS TÉCNICOS SOBRE EXECUÇÃO E TRANSPARÊNCIA</p>
-                    <a href="#" class="product-link">Visualizar</a>
+                    <p>Relatórios técnicos sobre execução e transparência</p>
+                    <a href="relatorios.html" class="product-link">Visualizar</a>
                 </div>
             </div>
         </div>
