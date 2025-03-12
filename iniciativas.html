@@ -375,14 +375,15 @@
             nav {
                 position: fixed;
                 top: 0;
-                right: -280px;
-                width: 280px;
+                right: -300px;
+                width: 300px;
                 height: 100vh;
                 background-color: var(--primary-color);
                 box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
                 transition: var(--transition);
                 z-index: 1002;
                 padding-top: var(--spacing-xl);
+                overflow-y: auto;
             }
             
             nav.active {
@@ -405,6 +406,7 @@
                 padding: var(--spacing-sm) var(--spacing-md);
                 border-radius: 0;
                 width: 100%;
+                font-size: 1.1rem;
             }
             
             nav ul li a:hover {
@@ -413,6 +415,23 @@
             
             nav ul li a::after {
                 display: none;
+            }
+            
+            .nav-social-icons {
+                flex-direction: row;
+                justify-content: center;
+                margin: var(--spacing-md) 0;
+                gap: 15px;
+            }
+            
+            .nav-social-icons a {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .nav-social-icons img {
+                width: 24px;
+                height: 24px;
             }
             
             .overlay {
@@ -470,12 +489,30 @@
                 opacity: 1;
                 visibility: visible;
             }
+            
+            /* Ajustes para a página de iniciativas em tablets */
+            .initiatives-grid {
+                grid-template-columns: minmax(250px, 450px);
+            }
+            
+            .initiative-image img {
+                width: 300px;
+                margin-bottom: 0.8rem;
+            }
+            
+            .initiative-image {
+                padding: 1rem 0 0;
+            }
+            
+            .initiative-content {
+                padding: 0.7rem 1rem 0.8rem;
+            }
         }
 
         /* Celulares grandes */
         @media (max-width: 576px) {
             .container {
-                padding: 0 var(--spacing-sm);
+                padding: 0 15px;
             }
             
             .footer-container {
@@ -515,6 +552,57 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
+            
+            /* Ajustes específicos para a página de iniciativas em celulares */
+            .initiatives-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .initiative-card {
+                padding: 0.5rem 1rem 1rem;
+                max-width: 400px;
+            }
+            
+            .initiative-icon {
+                width: 250px;
+                height: 250px;
+                margin-bottom: 0.3rem;
+            }
+            
+            .initiative-card img {
+                width: 250px;
+                height: auto;
+            }
+            
+            .initiative-card p {
+                font-size: 0.9rem;
+                margin-bottom: 0.8rem;
+                line-height: 1.4;
+            }
+            
+            .initiative-link {
+                padding: 7px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .page-description {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+            
+            .initiative-image img {
+                width: 250px;
+                margin-bottom: 0.7rem;
+            }
+            
+            .initiative-image {
+                padding: 0.8rem 0 0;
+            }
+            
+            .initiative-content {
+                padding: 0.7rem 1rem 0.8rem;
+            }
         }
 
         /* Celulares pequenos */
@@ -538,6 +626,55 @@
             .placeholder-text {
                 margin: var(--spacing-md) 0;
             }
+            
+            .initiative-icon {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 0.3rem;
+            }
+            
+            .initiative-card img {
+                width: 200px;
+            }
+            
+            .initiative-card {
+                padding: 0.4rem 0.8rem 0.8rem;
+                max-width: 320px;
+            }
+            
+            .initiative-card p {
+                margin-bottom: 0.6rem;
+                line-height: 1.3;
+            }
+            
+            .initiative-link {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
+            
+            .initiative-image img {
+                width: 200px;
+                margin-bottom: 0.6rem;
+            }
+            
+            .initiative-image {
+                padding: 0.6rem 0 0;
+            }
+            
+            .initiative-content {
+                padding: 0.5rem 0.8rem 0.7rem;
+            }
+            
+            .initiative-content p {
+                font-size: 0.85rem;
+                line-height: 1.3;
+                margin-bottom: 0.6rem;
+            }
+            
+            .initiative-link {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
         }
 
         /* Estilos para a página de iniciativas */
@@ -550,7 +687,7 @@
         
         .initiatives-grid {
             display: grid;
-            grid-template-columns: minmax(280px, 600px);
+            grid-template-columns: minmax(280px, 450px);
             gap: 2rem;
             margin-bottom: 4rem;
             justify-content: center;
@@ -560,7 +697,7 @@
             background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            padding: 1.5rem;
+            padding: 0;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -568,6 +705,9 @@
             text-align: center;
             height: 100%;
             border-top: 5px solid var(--primary-color);
+            max-width: 450px;
+            margin: 0 auto;
+            overflow: hidden;
         }
         
         .initiative-card:hover {
@@ -575,37 +715,44 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .initiative-icon {
-            margin-bottom: 1rem;
-            width: 80px;
-            height: 80px;
+        .initiative-image {
+            width: 100%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            background-color: rgba(155, 45, 48, 0.1);
-            border-radius: 50%;
-            padding: 15px;
+            align-items: center;
+            padding: 3rem 0 0;
+            margin: 0;
+            background-color: #f9f9f9;
         }
         
-        .initiative-card h2 {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-weight: bold;
+        .initiative-image img {
+            width: 350px;
+            height: auto;
+            max-width: 100%;
+            display: block;
+            margin-bottom: 2rem;
         }
         
-        .initiative-card p {
+        .initiative-content {
+            padding: 0.8rem 1.2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .initiative-content p {
             color: #555;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            margin: 0 0 0.8rem 0;
+            padding: 0;
+            font-size: 1rem;
+            line-height: 1.4;
             text-align: center;
         }
         
         .initiative-link {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 8px 18px;
             background-color: var(--primary-color);
             color: white;
             border-radius: 30px;
@@ -613,7 +760,6 @@
             transition: all 0.3s ease;
             font-size: 0.9rem;
             text-align: center;
-            margin-top: auto;
         }
         
         .initiative-link:hover {
@@ -624,8 +770,27 @@
         
         @media (max-width: 992px) {
             .initiatives-grid {
-                grid-template-columns: minmax(250px, 550px);
+                grid-template-columns: minmax(250px, 450px);
                 gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .initiatives-grid {
+                grid-template-columns: minmax(250px, 450px);
+            }
+            
+            .initiative-image img {
+                width: 300px;
+                margin-bottom: 0.8rem;
+            }
+            
+            .initiative-image {
+                padding: 1rem 0 0;
+            }
+            
+            .initiative-content {
+                padding: 0.7rem 1rem 0.8rem;
             }
         }
         
@@ -633,19 +798,74 @@
             .initiatives-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
+                max-width: 400px;
+                margin: 0 auto 4rem;
             }
             
             .initiative-card {
-                padding: 1.2rem;
+                max-width: 400px;
             }
             
-            .initiative-icon {
-                width: 60px;
-                height: 60px;
+            .initiative-image img {
+                width: 250px;
+                margin-bottom: 0.7rem;
             }
             
-            .initiative-card h2 {
-                font-size: 1.1rem;
+            .initiative-image {
+                padding: 0.8rem 0 0;
+            }
+            
+            .initiative-content {
+                padding: 0.6rem 1rem 0.8rem;
+            }
+            
+            .initiative-content p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            
+            .initiative-link {
+                padding: 7px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .page-description {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .initiatives-grid {
+                max-width: 320px;
+            }
+            
+            .initiative-card {
+                max-width: 320px;
+            }
+            
+            .initiative-image img {
+                width: 200px;
+                margin-bottom: 0.6rem;
+            }
+            
+            .initiative-image {
+                padding: 0.6rem 0 0;
+            }
+            
+            .initiative-content {
+                padding: 0.5rem 0.8rem 0.7rem;
+            }
+            
+            .initiative-content p {
+                font-size: 0.85rem;
+                line-height: 1.3;
+                margin-bottom: 0.6rem;
+            }
+            
+            .initiative-link {
+                padding: 6px 14px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -689,12 +909,13 @@
             <div class="initiatives-grid">
                 <!-- Iniciativa Falando sobre Orçamento -->
                 <div class="initiative-card">
-                    <div class="initiative-icon">
-                        <img src="https://static.wixstatic.com/media/c96204_8433680da40c40bb81c08f790f4f4cba~mv2.png" alt="Ícone Falando sobre Orçamento" width="64" height="64">
+                    <div class="initiative-image">
+                        <img src="https://static.wixstatic.com/media/c96204_caa74ae103e3411f93fa0d3a0fa70da4~mv2.png" alt="Falando sobre Orçamento" width="350" height="350">
                     </div>
-                    <h2>Falando sobre Orçamento</h2>
-                    <p>A iniciativa "Falando sobre Orçamento" tem como objetivo fortalecer o conhecimento sobre orçamento público e seus desdobramentos, proporcionando informações acessíveis a membros e servidores do MPAC, além da sociedade em geral.</p>
-                    <a href="#" class="initiative-link">Conhecer Mais</a>
+                    <div class="initiative-content">
+                        <p>A iniciativa "Falando sobre Orçamento" tem como objetivo fortalecer o conhecimento sobre orçamento público e seus desdobramentos, proporcionando informações acessíveis a membros e servidores do MPAC, além da sociedade em geral.</p>
+                        <a href="falando-sobre-orcamento.html" class="initiative-link">Conhecer Mais</a>
+                    </div>
                 </div>
             </div>
         </div>
