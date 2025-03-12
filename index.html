@@ -25,6 +25,11 @@
             --transition: all 0.3s ease;
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             --border-radius: 12px;
+            --spacing-xl: 4rem;
+            --spacing-lg: 2rem;
+            --spacing-md: 1rem;
+            --spacing-sm: 0.5rem;
+            --primary-hover: #e52d28;
         }
 
         * {
@@ -556,6 +561,10 @@
         }
 
         @media (max-width: 768px) {
+            .container {
+                max-width: 540px;
+            }
+            
             .menu-toggle {
                 display: block;
             }
@@ -563,13 +572,15 @@
             nav {
                 position: fixed;
                 top: 0;
-                right: -250px;
-                width: 250px;
+                right: -300px;
+                width: 300px;
                 height: 100vh;
                 background-color: var(--primary-color);
                 box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
                 transition: var(--transition);
-                z-index: 1001;
+                z-index: 1002;
+                padding-top: var(--spacing-xl);
+                overflow-y: auto;
             }
             
             nav.active {
@@ -578,7 +589,8 @@
             
             nav ul {
                 flex-direction: column;
-                padding: 4rem 0 0 0;
+                padding: 0;
+                margin-top: 50px; /* Espaço para o botão de fechar */
             }
             
             nav ul li {
@@ -588,16 +600,35 @@
             
             nav ul li a {
                 display: block;
-                padding: 1rem 2rem;
+                padding: var(--spacing-sm) var(--spacing-md);
                 border-radius: 0;
+                width: 100%;
+                font-size: 1.1rem;
             }
             
             nav ul li a:hover {
-                background-color: #e52d28; /* Cor do hover alterada para #e52d28 */
+                background-color: var(--primary-hover);
             }
             
             nav ul li a::after {
                 display: none;
+            }
+            
+            .nav-social-icons {
+                flex-direction: row;
+                justify-content: center;
+                margin: var(--spacing-md) 0;
+                gap: 15px;
+            }
+            
+            .nav-social-icons a {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .nav-social-icons img {
+                width: 24px;
+                height: 24px;
             }
             
             .overlay {
@@ -607,98 +638,196 @@
                 width: 100%;
                 height: 100%;
                 background-color: rgba(0, 0, 0, 0.5);
-                z-index: 1000;
+                z-index: 1001;
                 opacity: 0;
                 visibility: hidden;
                 transition: var(--transition);
+                -webkit-backdrop-filter: blur(3px);
+                backdrop-filter: blur(3px);
+                pointer-events: none;
             }
             
             .overlay.active {
                 opacity: 1;
                 visibility: visible;
+                pointer-events: auto;
             }
             
-            .hero-content {
-                max-width: 100%;
-                margin: 0 1rem;
+            .logo img {
+                min-width: 150px;
+                max-height: 40px;
             }
             
+            .main-content {
+                padding: var(--spacing-lg) 0;
+            }
+            
+            .content-area {
+                padding: var(--spacing-sm);
+            }
+            
+            .close-menu {
+                display: block; /* Mostra o botão em telas pequenas */
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                z-index: 1003;
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            nav.active .close-menu {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            /* Ajustes para a seção hero em tablets */
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+                max-width: 90%;
+            }
+            
+            /* Ajustes para a seção de produtos em tablets */
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            .main-content {
+                padding: var(--spacing-md) 0;
+            }
+            
+            .page-title {
+                font-size: 1.6rem;
+            }
+            
+            html {
+                font-size: 14px;
+            }
+            
+            .footer-section {
+                margin-bottom: var(--spacing-sm);
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .footer-logo, .footer-description {
+                text-align: center;
+            }
+            
+            .footer-section h3 {
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            /* Ajustes específicos para celulares */
+            .hero-content h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .product-card {
+                padding: 1.2rem;
+            }
+            
+            .product-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .news-card {
+                padding: 1rem;
+            }
+            
+            .news-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
             }
             
             .image-accordion {
                 flex-direction: column;
                 height: auto;
-                padding: 0.5rem 0;
+                gap: 10px;
             }
             
             .image-accordion-item {
                 width: 100%;
                 height: 80px;
                 border-radius: 10px;
-                margin-bottom: 10px;
+                margin-bottom: 5px;
             }
             
             .image-accordion-item:hover {
-                height: 280px;
+                height: 250px;
                 width: 100%;
-                transform: scale(1);
             }
             
             .image-accordion-item .title {
                 font-size: 1rem;
-                padding: 5px;
-                bottom: 10px;
+                padding: 8px 12px;
             }
             
             .content {
-                padding: 80px 20px 20px 20px;
+                padding: 70px 15px 15px;
             }
             
             .content h2 {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
             }
             
             .content p {
                 font-size: 0.9rem;
-            }
-            
-            .content .icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            
-            .news-grid {
-                grid-template-columns: 1fr; /* Uma coluna em mobile */
-            }
-            
-            .logo img {
-                min-width: 150px; /* Reduz a largura mínima em telas menores */
-                max-height: 40px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .section {
-                padding: 2rem 0;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .hero {
-                height: 60vh;
-            }
-            
-            .hero-content h1 {
-                font-size: 1.8rem;
             }
         }
 
@@ -765,8 +894,8 @@
         <div class="hero-background"></div>
         <div class="container">
             <div class="hero-content">
-                <h1>Observatório de Políticas Públicas: Uma Ferramenta do MPAC para a Sociedade</h1>
-                <p>O OPP monitora a execução das políticas públicas previstas no Plano Plurianual (PPA), na Lei de Diretrizes Orçamentárias (LDO) e na Lei Orçamentária Anual (LOA), acompanhando indicadores sociais, orçamentários e fiscais do estado e dos municípios. Nosso trabalho fortalece a atuação do MPAC na defesa do bem público, amplia a transparência sobre o orçamento e promove um controle social mais democrático. Transformamos dados em informação acessível para qualificar a gestão e incentivar a participação cidadã.</p>
+                <h1 style="max-width: 500px;">Observatório de Políticas Públicas: uma ferramenta do MPAC para a sociedade</h1>
+                <p style="max-width: 500px; text-align: justify;">O OPP monitora a execução das políticas públicas previstas no Plano Plurianual (PPA), na Lei de Diretrizes Orçamentárias (LDO) e na Lei Orçamentária Anual (LOA), acompanhando indicadores sociais, orçamentários e fiscais do estado e dos municípios.</p>
                 <a href="sobre.html" class="hero-btn">Saiba Mais</a>
             </div>
         </div>
