@@ -375,14 +375,15 @@
             nav {
                 position: fixed;
                 top: 0;
-                right: -280px;
-                width: 280px;
+                right: -300px;
+                width: 300px;
                 height: 100vh;
                 background-color: var(--primary-color);
                 box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
                 transition: var(--transition);
                 z-index: 1002;
                 padding-top: var(--spacing-xl);
+                overflow-y: auto;
             }
             
             nav.active {
@@ -405,6 +406,7 @@
                 padding: var(--spacing-sm) var(--spacing-md);
                 border-radius: 0;
                 width: 100%;
+                font-size: 1.1rem;
             }
             
             nav ul li a:hover {
@@ -413,6 +415,23 @@
             
             nav ul li a::after {
                 display: none;
+            }
+            
+            .nav-social-icons {
+                flex-direction: row;
+                justify-content: center;
+                margin: var(--spacing-md) 0;
+                gap: 15px;
+            }
+            
+            .nav-social-icons a {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .nav-social-icons img {
+                width: 24px;
+                height: 24px;
             }
             
             .overlay {
@@ -470,12 +489,27 @@
                 opacity: 1;
                 visibility: visible;
             }
+            
+            /* Ajustes para a página de boletins em tablets */
+            .bulletins-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .bulletin-card {
+                padding: 1.8rem;
+            }
+            
+            .bulletin-icon {
+                width: 90px;
+                height: 90px;
+            }
         }
 
         /* Celulares grandes */
         @media (max-width: 576px) {
             .container {
-                padding: 0 var(--spacing-sm);
+                padding: 0 15px;
             }
             
             .footer-container {
@@ -514,6 +548,42 @@
             .footer-section h3::after {
                 left: 50%;
                 transform: translateX(-50%);
+            }
+            
+            /* Ajustes específicos para a página de boletins em celulares */
+            .bulletins-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .bulletin-card {
+                padding: 1.2rem;
+            }
+            
+            .bulletin-icon {
+                width: 70px;
+                height: 70px;
+                padding: 12px;
+            }
+            
+            .bulletin-card h2 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .bulletin-card p {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .bulletin-link {
+                padding: 10px 0;
+                font-size: 0.85rem;
+            }
+            
+            .page-description {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
             }
         }
 
