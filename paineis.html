@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Iniciativas do Observatório de Políticas Públicas (OPP) - Projetos para monitoramento e análise de políticas públicas">
-    <meta name="keywords" content="OPP, Observatório, Políticas Públicas, MPAC, Iniciativas, Projetos">
+    <meta name="description" content="Painéis do Observatório de Políticas Públicas (OPP) - Ferramentas interativas para visualização de dados">
+    <meta name="keywords" content="OPP, Observatório, Políticas Públicas, MPAC, Painéis, Dashboards">
     <meta name="author" content="MPAC">
     <meta name="theme-color" content="#9b2d30">
-    <title>Iniciativas - OPP</title>
+    <title>Painéis - OPP</title>
     <!-- Preconectar com domínios externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -375,14 +375,15 @@
             nav {
                 position: fixed;
                 top: 0;
-                right: -280px;
-                width: 280px;
+                right: -300px;
+                width: 300px;
                 height: 100vh;
                 background-color: var(--primary-color);
                 box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
                 transition: var(--transition);
                 z-index: 1002;
                 padding-top: var(--spacing-xl);
+                overflow-y: auto;
             }
             
             nav.active {
@@ -405,6 +406,7 @@
                 padding: var(--spacing-sm) var(--spacing-md);
                 border-radius: 0;
                 width: 100%;
+                font-size: 1.1rem;
             }
             
             nav ul li a:hover {
@@ -413,6 +415,23 @@
             
             nav ul li a::after {
                 display: none;
+            }
+            
+            .nav-social-icons {
+                flex-direction: row;
+                justify-content: center;
+                margin: var(--spacing-md) 0;
+                gap: 15px;
+            }
+            
+            .nav-social-icons a {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .nav-social-icons img {
+                width: 24px;
+                height: 24px;
             }
             
             .overlay {
@@ -470,12 +489,27 @@
                 opacity: 1;
                 visibility: visible;
             }
+            
+            /* Ajustes para a página de painéis em tablets */
+            .panels-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .panel-card {
+                padding: 1.8rem;
+            }
+            
+            .panel-icon {
+                width: 90px;
+                height: 90px;
+            }
         }
-
+        
         /* Celulares grandes */
         @media (max-width: 576px) {
             .container {
-                padding: 0 var(--spacing-sm);
+                padding: 0 15px;
             }
             
             .footer-container {
@@ -515,6 +549,42 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
+            
+            /* Ajustes específicos para a página de painéis em celulares */
+            .panels-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .panel-card {
+                padding: 1.2rem;
+            }
+            
+            .panel-icon {
+                width: 70px;
+                height: 70px;
+                padding: 12px;
+            }
+            
+            .panel-card h2 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .panel-card p {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .panel-link {
+                padding: 10px 0;
+                font-size: 0.85rem;
+            }
+            
+            .page-description {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
         }
 
         /* Celulares pequenos */
@@ -540,7 +610,7 @@
             }
         }
 
-        /* Estilos para a página de iniciativas */
+        /* Estilos para a página de painéis */
         .page-description {
             max-width: 800px;
             margin-bottom: 3rem;
@@ -548,104 +618,103 @@
             font-size: 1.1rem;
         }
         
-        .initiatives-grid {
+        .panels-grid {
             display: grid;
-            grid-template-columns: minmax(280px, 600px);
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
             margin-bottom: 4rem;
-            justify-content: center;
         }
         
-        .initiative-card {
+        .panel-card {
             background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            padding: 1.5rem;
+            padding: 2.5rem;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
             height: 100%;
             border-top: 5px solid var(--primary-color);
         }
         
-        .initiative-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .panel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .initiative-icon {
-            margin-bottom: 1rem;
-            width: 80px;
-            height: 80px;
+        .panel-icon {
+            margin: 0 auto 1.5rem;
+            width: 100px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: rgba(155, 45, 48, 0.1);
             border-radius: 50%;
-            padding: 15px;
+            padding: 20px;
         }
         
-        .initiative-card h2 {
+        .panel-card h2 {
             color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
             text-align: center;
             font-weight: bold;
         }
         
-        .initiative-card p {
+        .panel-card p {
             color: #555;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            font-size: 1rem;
             line-height: 1.6;
-            text-align: center;
         }
         
-        .initiative-link {
+        .panel-link {
             display: inline-block;
-            padding: 10px 20px;
+            width: 100%;
+            padding: 12px 0;
             background-color: var(--primary-color);
             color: white;
             border-radius: 30px;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s ease;
+            text-transform: uppercase;
             font-size: 0.9rem;
+            letter-spacing: 0.5px;
             text-align: center;
             margin-top: auto;
         }
         
-        .initiative-link:hover {
+        .panel-link:hover {
             background-color: var(--primary-hover);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(229, 45, 40, 0.2);
+            box-shadow: 0 5px 15px rgba(229, 45, 40, 0.3);
         }
         
         @media (max-width: 992px) {
-            .initiatives-grid {
-                grid-template-columns: minmax(250px, 550px);
-                gap: 1.5rem;
+            .panels-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
             }
         }
         
         @media (max-width: 576px) {
-            .initiatives-grid {
+            .panels-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
             }
             
-            .initiative-card {
-                padding: 1.2rem;
+            .panel-card {
+                padding: 1.5rem;
             }
             
-            .initiative-icon {
-                width: 60px;
-                height: 60px;
+            .panel-icon {
+                width: 80px;
+                height: 80px;
             }
             
-            .initiative-card h2 {
-                font-size: 1.1rem;
+            .panel-card h2 {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -683,18 +752,38 @@
     <!-- Conteúdo Principal -->
     <main class="main-content">
         <div class="container">
-            <h1 class="page-title">Iniciativas</h1>
-            <p class="page-description">Conheça as iniciativas do Observatório de Políticas Públicas, que promovem inovação, transparência e impacto social por meio de projetos e ações estratégicas.</p>
+            <h1 class="page-title">Painéis</h1>
+            <p class="page-description">Acesse nossos paineis para visualizar dados e indicadores sobre o Estado do Acre e municipios.</p>
             
-            <div class="initiatives-grid">
-                <!-- Iniciativa Falando sobre Orçamento -->
-                <div class="initiative-card">
-                    <div class="initiative-icon">
-                        <img src="https://static.wixstatic.com/media/c96204_8433680da40c40bb81c08f790f4f4cba~mv2.png" alt="Ícone Falando sobre Orçamento" width="64" height="64">
+            <div class="panels-grid">
+                <!-- Painel Gestão Fiscal Estado -->
+                <div class="panel-card">
+                    <div class="panel-icon">
+                        <img src="https://static.wixstatic.com/media/c96204_71eb86ae0e8341f0ae43770a95a1caf7~mv2.png" alt="Ícone Gestão Fiscal Estado" width="64" height="64">
                     </div>
-                    <h2>Falando sobre Orçamento</h2>
-                    <p>A iniciativa "Falando sobre Orçamento" tem como objetivo fortalecer o conhecimento sobre orçamento público e seus desdobramentos, proporcionando informações acessíveis a membros e servidores do MPAC, além da sociedade em geral.</p>
-                    <a href="#" class="initiative-link">Conhecer Mais</a>
+                    <h2>Painel Gestão Fiscal Estado</h2>
+                    <p>O painel acompanha os principais indicadores fiscais e orçamentários do Governo do Estado do Acre exigidos pela Lei de Responsabilidade Fiscal (Lei Complementar nº 101 de 04/05/2000)</p>
+                    <a href="#" class="panel-link">Acessar Painel</a>
+                </div>
+                
+                <!-- Painel Gestão Fiscal Municípios -->
+                <div class="panel-card">
+                    <div class="panel-icon">
+                        <img src="https://static.wixstatic.com/media/c96204_3c06d2816af04bbe8083659cee4d9298~mv2.png" alt="Ícone Gestão Fiscal Municípios" width="64" height="64">
+                    </div>
+                    <h2>Painel Gestão Fiscal Municípios</h2>
+                    <p>O painel acompanha os principais indicadores fiscais e orçamentários dos 22 municípios do Estado do Acre exigidos pela Lei de Responsabilidade Fiscal (Lei Complementar nº 101 de 04/05/2000)</p>
+                    <a href="#" class="panel-link">Acessar Painel</a>
+                </div>
+                
+                <!-- Painel Emendas em Foco -->
+                <div class="panel-card">
+                    <div class="panel-icon">
+                        <img src="https://static.wixstatic.com/media/c96204_2fb2481bd20944e2bfb29341e7248b23~mv2.png" alt="Ícone Emendas em Foco" width="64" height="64">
+                    </div>
+                    <h2>Painel Emendas em Foco</h2>
+                    <p>O painel monitora as emendas parlamentares estaduais, federais e de bancada destinadas ao Acre e seus municípios</p>
+                    <a href="#" class="panel-link">Acessar Painel</a>
                 </div>
             </div>
         </div>
