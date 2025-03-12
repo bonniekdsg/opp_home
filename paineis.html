@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Painéis do Observatório de Políticas Públicas (OPP) - Ferramentas interativas para visualização de dados">
-    <meta name="keywords" content="OPP, Observatório, Políticas Públicas, MPAC, Painéis, Dashboards">
+    <meta name="description" content="Iniciativas do Observatório de Políticas Públicas (OPP) - Projetos para monitoramento e análise de políticas públicas">
+    <meta name="keywords" content="OPP, Observatório, Políticas Públicas, MPAC, Iniciativas, Projetos">
     <meta name="author" content="MPAC">
     <meta name="theme-color" content="#9b2d30">
-    <title>Painéis - OPP</title>
+    <title>Iniciativas - OPP</title>
     <!-- Preconectar com domínios externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -540,7 +540,7 @@
             }
         }
 
-        /* Estilos para a página de painéis */
+        /* Estilos para a página de iniciativas */
         .page-description {
             max-width: 800px;
             margin-bottom: 3rem;
@@ -548,103 +548,104 @@
             font-size: 1.1rem;
         }
         
-        .panels-grid {
+        .initiatives-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: minmax(280px, 600px);
+            gap: 2rem;
             margin-bottom: 4rem;
+            justify-content: center;
         }
         
-        .panel-card {
+        .initiative-card {
             background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
-            padding: 2.5rem;
+            padding: 1.5rem;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
             height: 100%;
             border-top: 5px solid var(--primary-color);
         }
         
-        .panel-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .initiative-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .panel-icon {
-            margin: 0 auto 1.5rem;
-            width: 100px;
-            height: 100px;
+        .initiative-icon {
+            margin-bottom: 1rem;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: rgba(155, 45, 48, 0.1);
             border-radius: 50%;
-            padding: 20px;
+            padding: 15px;
         }
         
-        .panel-card h2 {
+        .initiative-card h2 {
             color: var(--primary-color);
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
             text-align: center;
             font-weight: bold;
         }
         
-        .panel-card p {
+        .initiative-card p {
             color: #555;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
             line-height: 1.6;
+            text-align: center;
         }
         
-        .panel-link {
+        .initiative-link {
             display: inline-block;
-            width: 100%;
-            padding: 12px 0;
+            padding: 10px 20px;
             background-color: var(--primary-color);
             color: white;
             border-radius: 30px;
-            font-weight: 600;
+            font-weight: 500;
             transition: all 0.3s ease;
-            text-transform: uppercase;
             font-size: 0.9rem;
-            letter-spacing: 0.5px;
             text-align: center;
             margin-top: auto;
         }
         
-        .panel-link:hover {
+        .initiative-link:hover {
             background-color: var(--primary-hover);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(229, 45, 40, 0.3);
+            box-shadow: 0 5px 15px rgba(229, 45, 40, 0.2);
         }
         
         @media (max-width: 992px) {
-            .panels-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 2rem;
+            .initiatives-grid {
+                grid-template-columns: minmax(250px, 550px);
+                gap: 1.5rem;
             }
         }
         
         @media (max-width: 576px) {
-            .panels-grid {
+            .initiatives-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
             
-            .panel-card {
-                padding: 1.5rem;
+            .initiative-card {
+                padding: 1.2rem;
             }
             
-            .panel-icon {
-                width: 80px;
-                height: 80px;
+            .initiative-icon {
+                width: 60px;
+                height: 60px;
             }
             
-            .panel-card h2 {
-                font-size: 1.2rem;
+            .initiative-card h2 {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -682,38 +683,18 @@
     <!-- Conteúdo Principal -->
     <main class="main-content">
         <div class="container">
-            <h1 class="page-title">Painéis</h1>
-            <p class="page-description">Acesse nossos paineis para visualizar dados e indicadores sobre o Estado do Acre e municipios.</p>
+            <h1 class="page-title">Iniciativas</h1>
+            <p class="page-description">Conheça as iniciativas do Observatório de Políticas Públicas, que promovem inovação, transparência e impacto social por meio de projetos e ações estratégicas.</p>
             
-            <div class="panels-grid">
-                <!-- Painel Gestão Fiscal Estado -->
-                <div class="panel-card">
-                    <div class="panel-icon">
-                        <img src="https://static.wixstatic.com/media/c96204_550de29f6d884bcca8182e99e7a9b2af~mv2.png" alt="Ícone Gestão Fiscal Estado" width="64" height="64">
+            <div class="initiatives-grid">
+                <!-- Iniciativa Falando sobre Orçamento -->
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <img src="https://static.wixstatic.com/media/c96204_8433680da40c40bb81c08f790f4f4cba~mv2.png" alt="Ícone Falando sobre Orçamento" width="64" height="64">
                     </div>
-                    <h2>Painel Gestão Fiscal Estado</h2>
-                    <p>O painel acompanha os principais indicadores fiscais e orçamentários do Governo do Estado do Acre exigidos pela Lei de Responsabilidade Fiscal (Lei Complementar nº 101 de 04/05/2000)</p>
-                    <a href="#" class="panel-link">Acessar Painel</a>
-                </div>
-                
-                <!-- Painel Gestão Fiscal Municípios -->
-                <div class="panel-card">
-                    <div class="panel-icon">
-                        <img src="https://static.wixstatic.com/media/c96204_2137fd5cecdc4f0dab94bce6e4de09b1~mv2.png" alt="Ícone Gestão Fiscal Municípios" width="64" height="64">
-                    </div>
-                    <h2>Painel Gestão Fiscal Municípios</h2>
-                    <p>O painel acompanha os principais indicadores fiscais e orçamentários dos 22 municípios do Estado do Acre exigidos pela Lei de Responsabilidade Fiscal (Lei Complementar nº 101 de 04/05/2000)</p>
-                    <a href="#" class="panel-link">Acessar Painel</a>
-                </div>
-                
-                <!-- Painel Emendas em Foco -->
-                <div class="panel-card">
-                    <div class="panel-icon">
-                        <img src="https://static.wixstatic.com/media/c96204_8433680da40c40bb81c08f790f4f4cba~mv2.png" alt="Ícone Emendas em Foco" width="64" height="64">
-                    </div>
-                    <h2>Painel Emendas em Foco</h2>
-                    <p>O painel monitora as emendas parlamentares estaduais, federais e de bancada destinadas ao Acre e seus municípios</p>
-                    <a href="#" class="panel-link">Acessar Painel</a>
+                    <h2>Falando sobre Orçamento</h2>
+                    <p>A iniciativa "Falando sobre Orçamento" tem como objetivo fortalecer o conhecimento sobre orçamento público e seus desdobramentos, proporcionando informações acessíveis a membros e servidores do MPAC, além da sociedade em geral.</p>
+                    <a href="#" class="initiative-link">Conhecer Mais</a>
                 </div>
             </div>
         </div>
@@ -729,21 +710,13 @@
                         Observatório de Políticas Públicas dedicado à transparência e ao monitoramento fiscal.
                     </div>
                     <div class="social-icons">
-                        <a href="#" class="social-icon" aria-label="Facebook">
-                            <span aria-hidden="true">f</span>
-                            <span class="sr-only">Facebook</span>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="LinkedIn">
-                            <span aria-hidden="true">in</span>
-                            <span class="sr-only">LinkedIn</span>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="Instagram">
-                            <span aria-hidden="true">ig</span>
+                        <a href="https://www.instagram.com/mpacre/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <img src="https://static.wixstatic.com/media/c96204_35e7835a480d49f29359e3246344af2d~mv2.png" alt="Instagram" width="24" height="24">
                             <span class="sr-only">Instagram</span>
                         </a>
-                        <a href="#" class="social-icon" aria-label="YouTube">
-                            <span aria-hidden="true">yt</span>
-                            <span class="sr-only">YouTube</span>
+                        <a href="https://www.mpac.mp.br/" class="social-icon" aria-label="Site" target="_blank" rel="noopener noreferrer">
+                            <img src="https://static.wixstatic.com/media/c96204_196f832d97854a339360f23efd193930~mv2.png" alt="MPAC" width="24" height="24">
+                            <span class="sr-only">Site</span>
                         </a>
                     </div>
                 </div>
@@ -769,14 +742,15 @@
                 <div class="footer-section">
                     <h3>Contato</h3>
                     <ul class="footer-links">
-                        <li>Endereço: Rua Exemplo, 123</li>
-                        <li>Telefone: (00) 1234-5678</li>
-                        <li>Email: contato@opp.org.br</li>
+                        <li>Ministério Público do Estado do Acre</li>
+                        <li>Endereço: Rua Marechal Deodoro, 472, Centro, Rio Branco - AC, CEP: 69900-400</li>
+                        <li>Telefone: (68) 3212-2000</li>
+                        <li>Email: contato@mpac.mp.br</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                © 2025 Observatório de Políticas Públicas. Todos os direitos reservados.
+                Ministério Público do Estado do Acre: © 2025 Observatório de Políticas Públicas. Todos os direitos reservados.
             </div>
         </div>
     </footer>
