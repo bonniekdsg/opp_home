@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Falando sobre Orçamento - Iniciativa do Observatório de Políticas Públicas (OPP) para fortalecer o conhecimento sobre orçamento público">
+    <meta name="keywords" content="OPP, Observatório, Políticas Públicas, MPAC, Orçamento Público, Transparência Fiscal">
+    <meta name="author" content="MPAC">
+    <meta name="theme-color" content="#9b2d30">
+    <title>Falando sobre Orçamento - OPP</title>
+    <!-- Preconectar com domínios externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://static.wixstatic.com">
+    <!-- Importando a fonte Roboto do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* VARIÁVEIS E RESET */
+        :root {
+            --primary-color: #9b2d30;
+            --primary-hover: #e52d28;
+            --secondary-color: #333;
+            --light-color: #f8f8f8;
+            --dark-color: #222;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+            --border-radius-sm: 6px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: #fff;
+            color: var(--secondary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* CABEÇALHO */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: var(--spacing-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            min-width: 200px;
+            max-height: 60px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: var(--spacing-xs);
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+            z-index: 1002;
+        }
+
+        .menu-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-sm);
+        }
+
+        nav ul li a {
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+            position: relative;
+            display: inline-block;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-hover);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 70%;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .close-menu {
+            display: none; /* Esconde o botão em telas grandes */
+        }
+
+        /* Estilo para os ícones sociais na barra de navegação */
+        .nav-social-icons {
+            display: flex;
+            gap: 5px;
+            margin-left: 10px;
+        }
+        
+        .nav-social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            padding: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-social-icons a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .nav-social-icons a::after {
+            display: none;
+        }
+        
+        .nav-social-icons img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        .main-content {
+            padding: var(--spacing-xl) 0;
+            min-height: calc(100vh - 300px); /* Garante espaço suficiente para o conteúdo */
+            flex: 1;
+        }
+
+        .page-title {
+            text-align: left;
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            padding-bottom: var(--spacing-xs);
+            color: var(--secondary-color);
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), transparent);
+        }
+
+        .content-area {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: var(--spacing-lg) 0 var(--spacing-md);
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-description {
+            color: #aaa;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            padding-bottom: var(--spacing-xs);
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .footer-links a {
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: var(--spacing-md);
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Adicionando estilos para melhorar acessibilidade */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid #333;
+            color: #aaa;
+        }
+
+        /* Estilos específicos para a página Falando sobre Orçamento */
+        .initiative-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .initiative-logo {
+            width: 200px;
+            height: 200px;
+            flex-shrink: 0;
+        }
+        
+        .initiative-intro {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .initiative-intro h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .initiative-intro p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin: var(--spacing-lg) 0 var(--spacing-sm);
+            position: relative;
+            padding-bottom: var(--spacing-xs);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .text-content {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .text-content p {
+            margin-bottom: var(--spacing-sm);
+            color: #444;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .text-content ul, .text-content ol {
+            margin-left: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .text-content li {
+            margin-bottom: var(--spacing-xs);
+            color: #444;
+        }
+        
+        .text-content strong {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background-color: #f0f4f8;
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-md);
+            border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+            margin: var(--spacing-md) 0;
+        }
+        
+        .info-box h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+            font-size: 1.2rem;
+        }
+        
+        .info-box p {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .info-box ul {
+            margin-left: var(--spacing-md);
+        }
+        
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .material-card {
+            background-color: white;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .material-image {
+            height: 160px;
+            background-color: #f0f4f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .material-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .material-card:hover .material-image img {
+            transform: scale(1.05);
+        }
+        
+        .material-content {
+            padding: var(--spacing-sm);
+        }
+        
+        .material-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-xs);
+            color: var(--secondary-color);
+        }
+        
+        .material-content p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .material-link {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        
+        .material-link:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: var(--spacing-md);
+            transition: var(--transition);
+        }
+        
+        .back-link:before {
+            content: '←';
+            margin-right: 8px;
+            transition: var(--transition);
+        }
+        
+        .back-link:hover {
+            color: var(--primary-hover);
+        }
+        
+        .back-link:hover:before {
+            margin-right: 12px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 992px) {
+            .initiative-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-sm);
+            }
+            
+            .initiative-logo {
+                width: 180px;
+                height: 180px;
+                margin-bottom: var(--spacing-sm);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                max-width: 540px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background-color: var(--primary-color);
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1002;
+                padding-top: var(--spacing-xl);
+                overflow-y: auto;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+                margin-top: 50px;
+            }
+            
+            nav ul li {
+                margin: 0;
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: var(--spacing-sm) var(--spacing-md);
+                border-radius: 0;
+                width: 100%;
+                font-size: 1.1rem;
+            }
+            
+            nav ul li a:hover {
+                background-color: var(--primary-hover);
+            }
+            
+            nav ul li a::after {
+                display: none;
+            }
+            
+            .nav-social-icons {
+                flex-direction: row;
+                justify-content: center;
+                margin: var(--spacing-md) 0;
+                gap: 15px;
+            }
+            
+            .nav-social-icons a {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .nav-social-icons img {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1001;
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                -webkit-backdrop-filter: blur(3px);
+                backdrop-filter: blur(3px);
+                pointer-events: none;
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+            
+            .close-menu {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                z-index: 1003;
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            nav.active .close-menu {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .materials-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            .main-content {
+                padding: var(--spacing-md) 0;
+            }
+            
+            .page-title {
+                font-size: 1.6rem;
+            }
+            
+            .initiative-logo {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .initiative-intro h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+            
+            .footer-logo, .footer-description {
+                text-align: center;
+            }
+            
+            .footer-section h3 {
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://static.wixstatic.com/media/c96204_9a59b8febc1a4372a615ea58feb115a8~mv2.png" alt="Logo OPP" width="250" height="60" loading="eager">
+                </a>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+                <i>☰</i>
+            </button>
+            <nav id="nav">
+                <button class="close-menu" id="closeMenu" aria-label="Fechar menu">✕</button>
+                <ul>
+                    <li><a href="index.html#inicio">Início</a></li>
+                    <li><a href="index.html#produtos">Produtos</a></li>
+                    <li><a href="index.html#noticias">Notícias</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li class="nav-social-icons">
+                        <a href="https://www.instagram.com/mpacre/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="https://static.wixstatic.com/media/c96204_8f5d9c11bb68466eb64dca4e43f79834~mv2.png" alt="Instagram"></a>
+                        <a href="https://www.mpac.mp.br/" target="_blank" rel="noopener noreferrer" aria-label="MPAC"><img src="https://static.wixstatic.com/media/c96204_14ad95c6a55e4d839ed6abcf48deafde~mv2.png" alt="MPAC"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="container">
+            <a href="iniciativas.html" class="back-link">Voltar para Iniciativas</a>
+            
+            <h1 class="page-title">Falando sobre Orçamento</h1>
+            
+            
+            
+            <div class="content-area">
+                <h2 class="section-title">Sobre a Iniciativa</h2>
+                <div class="text-content">
+                    <p>A iniciativa "Falando sobre Orçamento" tem como objetivo fortalecer o conhecimento sobre orçamento público e seus desdobramentos, proporcionando informações acessíveis a membros e servidores do MPAC, além da sociedade em geral.</p>
+                    <p>O entendimento sobre orçamento público é essencial para uma atuação ministerial mais estratégica e eficiente, especialmente no que se refere à indução e fiscalização das políticas públicas, pois não há política pública sem orçamento.</p>
+                    <p>As publicações trarão conteúdos claros e objetivos sobre a gestão orçamentária e sua importância, facilitando a compreensão do tema e contribuindo para uma atuação mais qualificada na defesa do interesse público.</p>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Principais objetivos:</h3>
+                    <ul>
+                        <li>Promover a educação orçamentária entre membros e servidores do MPAC</li>
+                        <li>Desenvolver materiais informativos em linguagem acessível sobre o orçamento público</li>
+                        <li>Realizar eventos e capacitações sobre temas relacionados ao orçamento</li>
+                        <li>Incentivar a transparência e o controle social dos gastos públicos</li>
+                        <li>Fortalecer a atuação do Ministério Público na fiscalização da aplicação dos recursos públicos</li>
+                    </ul>
+                </div>
+                
+                <h2 class="section-title">Materiais Educativos</h2>
+                <div class="text-content">
+                    <p>Nossa iniciativa produz diversos materiais educativos sobre orçamento público, destinados a diferentes públicos e com diferentes níveis de aprofundamento. Confira abaixo alguns dos materiais disponíveis:</p>
+                </div>
+                
+                <div class="materials-grid">
+                    <div class="material-card">
+                        <div class="material-image">
+                            <img src="https://static.wixstatic.com/media/c96204_5fe4efda68f448e7b8f5fde1c698ec7c~mv2.jpeg" alt="Cartilha Orçamento para Todos">
+                        </div>
+                        <div class="material-content">
+                            <h3>Card: Por que isso importa?</h3>
+                            <p>Material introdutório que explica os conceitos básicos do orçamento público de forma simples e ilustrada.</p>
+                            <a href="javascript:void(0)" onclick="window.open('https://static.wixstatic.com/media/c96204_5fe4efda68f448e7b8f5fde1c698ec7c~mv2.jpeg', '_blank', 'width=800,height=600')" class="material-link">Visualizar</a>
+                        </div>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="material-image">
+                            <img src="https://static.wixstatic.com/media/c96204_85b634ee91724086a28e8f36f9998553~mv2.png" alt="Guia Prático de Fiscalização">
+                        </div>
+                        <div class="material-content">
+                            <h3>Card: O que é a LOA?</h3>
+                            <p>Manual voltado para cidadãos que desejam acompanhar e fiscalizar a execução do orçamento público.</p>
+                            <a href="javascript:void(0)" onclick="window.open('https://static.wixstatic.com/media/c96204_85b634ee91724086a28e8f36f9998553~mv2.png', '_blank', 'width=800,height=600')" class="material-link">Visualizar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <h2 class="section-title">Entre em Contato</h2>
+                <div class="text-content">
+                    <p>Se você tem interesse em saber mais sobre a iniciativa "Falando sobre Orçamento", solicitar materiais educativos ou sugerir temas para eventos e capacitações, entre em contato conosco:</p>
+                    <p><strong>E-mail:</strong> orcamento@mpac.mp.br<br>
+                    <strong>Telefone:</strong> (68) 3212-2000<br>
+                    <strong>Responsável:</strong>Observatório de Políticas Públicas</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <div class="footer-logo">OPP</div>
+                    <div class="footer-description">
+                        Observatório de Políticas Públicas dedicado à transparência e ao monitoramento fiscal.
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/mpacre/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <img src="https://static.wixstatic.com/media/c96204_35e7835a480d49f29359e3246344af2d~mv2.png" alt="Instagram" width="24" height="24">
+                            <span class="sr-only">Instagram</span>
+                        </a>
+                        <a href="https://www.mpac.mp.br/" class="social-icon" aria-label="Site" target="_blank" rel="noopener noreferrer">
+                            <img src="https://static.wixstatic.com/media/c96204_196f832d97854a339360f23efd193930~mv2.png" alt="MPAC" width="24" height="24">
+                            <span class="sr-only">Site</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#inicio">Início</a></li>
+                        <li><a href="index.html#produtos">Produtos</a></li>
+                        <li><a href="index.html#noticias">Notícias</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Produtos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#produtos">Produtos</a></li>
+                        <li><a href="paineis.html">Painéis</a></li>
+                        <li><a href="boletins.html">Boletins</a></li>
+                        <li><a href="iniciativas.html">Iniciativas</a></li>
+                        <li><a href="relatorios.html">Relatórios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li>Ministério Público do Estado do Acre</li>
+                        <li>Endereço: Rua Marechal Deodoro, 472, Centro, Rio Branco - AC, CEP: 69900-400</li>
+                        <li>Telefone: (68) 3212-2000</li>
+                        <li>Email: contato@mpac.mp.br</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                Ministério Público do Estado do Acre: © 2025 Observatório de Políticas Públicas. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Elementos DOM
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const nav = document.getElementById('nav');
+        const overlay = document.getElementById('overlay');
+
+        // Verificar se os elementos existem antes de adicionar event listeners
+        if (menuToggle && closeMenu && nav && overlay) {
+            // Menu móvel
+            menuToggle.addEventListener('click', () => {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                nav.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+            });
+
+            closeMenu.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            overlay.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Adicionando suporte para navegação por teclado
+            menuToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    menuToggle.click();
+                }
+            });
+
+            // Fechando menu ao pressionar ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && nav.classList.contains('active')) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Ajuste para telas que mudam de orientação
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768 && nav.classList.contains('active')) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
